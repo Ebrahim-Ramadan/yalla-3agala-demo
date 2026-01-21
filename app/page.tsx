@@ -73,7 +73,7 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-2">
               <img
@@ -99,7 +99,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-[#2F539D]/10 via-[#8E2A2A]/5 to-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-20 ">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-20 ">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -147,8 +147,8 @@ export default function Home() {
       </section>
 
       {/* Bikes Section */}
-      <section id="bikes" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="bikes" className="py-12 bg-gray-50">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Bike Fleet</h2>
             <p className="text-lg text-gray-600">Choose the perfect bike for your Cairo adventure</p>
@@ -198,8 +198,17 @@ export default function Home() {
 
       {/* About Section */}
       <section id="about" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
+        
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div>
+            <h3 className="text-4xl font-bold text-gray-900 mb-6">Our Community</h3>
+            <div className="grid md:grid-cols-3 gap-2">
+              <img src="/images/group-cycling.jpg" alt="Group cycling in Cairo" className="rounded-lg h-full w-full object-cover shadow-md" />
+              <img src="/images/shop-interior.jpg" alt="Yalla 3agala shop interior" className="rounded-lg h-full w-full object-cover shadow-md" />
+              <img src="/images/couple-cycling.jpg" alt="Couple enjoying bike ride" className="rounded-lg h-full w-full object-cover shadow-md" />
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 gap-12 items-center my-12">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About Yalla 3agala</h2>
               <p className="text-lg text-gray-600 mb-4">
@@ -240,20 +249,13 @@ export default function Home() {
             </Card>
           </div>
 
-          <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Our Community</h3>
-            <div className="grid md:grid-cols-3 gap-4">
-              <img src="/images/group-cycling.jpg" alt="Group cycling in Cairo" className="rounded-lg h-48 object-cover shadow-md" />
-              <img src="/images/couple-cycling.jpg" alt="Couple enjoying bike ride" className="rounded-lg h-48 object-cover shadow-md" />
-              <img src="/images/shop-interior.jpg" alt="Yalla 3agala shop interior" className="rounded-lg h-48 object-cover shadow-md" />
-            </div>
-          </div>
+        
         </div>
       </section>
 
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-[#2F539D]/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <Card className="border-gray-200">
               <CardHeader className="flex flex-row items-center gap-4">
@@ -298,10 +300,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Reservation Modal */}
+     {/* Reservation Modal */}
       {showReservation && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50">
-          <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto border-gray-200">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+          <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             <CardHeader className="flex flex-row items-center justify-between">
               <div>
                 <CardTitle className="text-2xl">Reserve Your Bike</CardTitle>
@@ -309,34 +311,110 @@ export default function Home() {
               </div>
               <button
                 onClick={() => setShowReservation(false)}
-                className="text-gray-500 hover:text-gray-900 text-xl"
+                className="text-muted-foreground hover:text-foreground"
               >
                 ✕
               </button>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Form fields remain mostly the same */}
-                {/* ... name, email, phone, bikeType, dates ... */}
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">Full Name</label>
+                    <Input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleFormChange}
+                      placeholder="Your name"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">Email</label>
+                    <Input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleFormChange}
+                      placeholder="your@email.com"
+                      required
+                    />
+                  </div>
+                </div>
 
-                <div className="bg-[#2F539D]/10 border border-[#2F539D]/20 rounded-lg p-4">
-                  <p className="text-sm text-gray-600 mb-2">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">Phone</label>
+                    <Input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleFormChange}
+                      placeholder="+20 1XX XXX XXXX"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">Bike Type</label>
+                    <select
+                      name="bikeType"
+                      value={formData.bikeType}
+                      onChange={(e) => setFormData(prev => ({ ...prev, bikeType: e.target.value }))}
+                      className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground"
+                      required
+                    >
+                      <option value="">Select a bike type</option>
+                      {bikes.map((bike) => (
+                        <option key={bike.id} value={bike.id}>
+                          {bike.name} - {bike.price}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">Start Date</label>
+                    <Input
+                      type="date"
+                      name="startDate"
+                      value={formData.startDate}
+                      onChange={handleFormChange}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">End Date</label>
+                    <Input
+                      type="date"
+                      name="endDate"
+                      value={formData.endDate}
+                      onChange={handleFormChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="bg-primary/10 border border-primary/20 rounded-lg p-4">
+                  <p className="text-sm text-muted-foreground mb-2">
                     <strong>Note:</strong> Our team will contact you to confirm your reservation and payment details.
                   </p>
-                  <p className="text-sm text-[#2F539D] font-medium">In-store collection available</p>
+                  <p className="text-sm text-primary font-medium">In-store collection available</p>
                 </div>
 
                 <div className="flex gap-4">
                   <Button
                     type="submit"
-                    className="flex-1 bg-[#2F539D] hover:bg-[#2F539D]/90 text-white"
+                    className="flex-1 bg-primary hover:bg-primary/90"
                   >
                     Complete Reservation
                   </Button>
                   <Button
                     type="button"
                     variant="outline"
-                    className="flex-1 border-[#8E2A2A] text-[#8E2A2A] hover:bg-[#8E2A2A]/10"
+                    className="flex-1 bg-transparent"
                     onClick={() => setShowReservation(false)}
                   >
                     Cancel
@@ -348,9 +426,10 @@ export default function Home() {
         </div>
       )}
 
+
       {/* Footer */}
       <footer className="bg-[#2F539D]/5 border-t border-gray-200 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
